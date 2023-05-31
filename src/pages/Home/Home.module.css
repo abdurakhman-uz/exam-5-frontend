@@ -1,0 +1,21 @@
+.container {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wrapper {
+    /* width: 1000px; */
+    /* display: flex; */
+    /* justify-content: space-evenly; */
+    /* flex-wrap: wrap; */
+
+
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-areas:
+        ". . ."
+        ". . .";
+    gap: 20px;
+}
