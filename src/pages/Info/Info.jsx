@@ -21,7 +21,6 @@ const Info = () => {
     const token = localStorage.getItem("token")
 
     let images = info.images
-    console.log(images);
 
     const setLikes = () => {
         setLike(!like)

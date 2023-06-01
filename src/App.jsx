@@ -4,6 +4,9 @@ import Cars from "./pages/Cars/Cars"
 import Info from "./pages/Info/Info"
 import Login from "./pages/Login/Login"
 import Register from "./pages/Register/Register"
+import AdminHome from "./pages/Admin/Home/Home"
+import Products from "./components/Products/Products"
+import Users from "./components/Users/Users"
 
 const App = () => {
   const token = localStorage.getItem("token")
@@ -19,6 +22,12 @@ const App = () => {
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+
+          {/* <Route path="/private/admin/home"  /> */}
+          <Route path="/private/admin/" element={<AdminHome />}>
+            <Route path="/private/admin/products" index element={<Products />} />
+            <Route path="/private/admin/users" index element={<Users />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </>
