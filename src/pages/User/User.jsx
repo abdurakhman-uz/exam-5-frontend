@@ -7,6 +7,7 @@ const User = () => {
     const backend = import.meta.env.VITE_BECKEND
     const navigate = useNavigate()
     const [info, setInfo] = useState()
+    const [update, setUpdate] = useState(false)
     const [isModal, setIsModal] = useState(false);
 
     const username = useRef(null);
@@ -40,8 +41,9 @@ const User = () => {
             })
             .then(data => {
                 setInfo(data.user)
+                setUpdate(false)
             })
-    }, [])
+    }, [update])
 
     const handleSetUpdate = () => {
         setIsModal(true)
