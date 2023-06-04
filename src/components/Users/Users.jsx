@@ -123,11 +123,19 @@ const Users = () => {
           }
         </ul>
 
-        <Modal title="Delete" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+        <Modal title="" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+          <div className='relative mb-4'>
+            <p className='absolute w-[14px] h-[28px] rounded-[4px] bg-[#ff8d8d] '></p>
+            <p className='ml-6 text-xl'>User Delete</p>
+          </div>
           <p>Are you sure to delete:</p><p className='font-mono'>{info.username}</p>
         </Modal>
 
-        <Modal title="Update" open={isModal} onOk={handleUpdate} onCancel={handleUpdateCancel}>
+        <Modal title="" open={isModal} onOk={handleUpdate} onCancel={handleUpdateCancel}>
+          <div className='relative mb-4'>
+            <p className='absolute w-[14px] h-[28px] rounded-[4px] bg-[#98ff8d] '></p>
+            <p className='ml-6 text-xl'>User Update</p>
+          </div>
           <p>Name</p>
           <Input ref={username} placeholder={info.username} />
           <br />
