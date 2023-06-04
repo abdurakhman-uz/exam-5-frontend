@@ -65,6 +65,7 @@ const Users = () => {
     setIsModal(false);
     const newData = {
       username: username.current.input.value,
+      email: email.current.input.value,
       password: password.current.input.value,
     }
 
