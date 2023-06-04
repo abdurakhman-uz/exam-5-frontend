@@ -7,6 +7,7 @@ import Register from "./pages/Register/Register"
 import AdminHome from "./pages/Admin/Home/Home"
 import Products from "./components/Products/Products"
 import Users from "./components/Users/Users"
+import User from "./pages/User/User"
 
 const App = () => {
   const token = localStorage.getItem("token")
@@ -22,6 +23,7 @@ const App = () => {
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/user/info" element={<User />} />
 
           {/* <Route path="/private/admin/home"  /> */}
           <Route path="/private/admin/" element={<AdminHome />}>
