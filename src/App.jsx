@@ -8,6 +8,7 @@ import AdminHome from "./pages/Admin/Home/Home"
 import Products from "./components/Products/Products"
 import Users from "./components/Users/Users"
 import User from "./pages/User/User"
+import NotFoundPage from "./pages/NotFound/NotFound"
 
 const App = () => {
   const token = localStorage.getItem("token")
@@ -17,6 +18,7 @@ const App = () => {
         {/* <div className="">App</div> */}
 
         <Routes>
+          <Route path="*" element={<NotFoundPage />} />
           <Route path="/" element={<Home />} />
           <Route path='/cars/:id' element={<Cars />} />
           <Route path='/cars/info/:id' element={<Info />} />
