@@ -6,6 +6,7 @@ import css from "./Home.module.css";
 const Home = () => {
 
   const [data, setData] = useState([])
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_BECKEND}/api/models/`).then(res => res.json()).then(data => setData(data.models))
@@ -13,7 +14,13 @@ const Home = () => {
 
   return (
     <>
-      <Link to="/login" className=" absolute top-4 right-4 text-white text-lg py-2 px-4 bg-[#4096ff] rounded-lg">Login</Link>
+      {
+        !token ?
+        (
+          <Link to="/login" className=" absolute top-4 right-4 text-white text-lg py-2 px-4 bg-[#4096ff] rounded-lg">Login</Link>
+        )
+        : null
+      }
       <div className={`${css.container} flex mt-20`}>
         <div className={`${css.wrapper}`}>
           {
