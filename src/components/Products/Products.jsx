@@ -433,6 +433,7 @@ const Products = () => {
             <Modal
                 title=""
                 open={categoryModal}
+                onCancel={categoryCancel}
                 footer={[
                     <Button
                         key="back"
@@ -463,6 +464,7 @@ const Products = () => {
             <Modal
                 title=""
                 open={addCars}
+                onCancel={handleCarsCancel}
                 footer={[
                     <Button
                         key="back"
@@ -481,77 +483,97 @@ const Products = () => {
                     <p className='absolute w-[14px] h-[28px] rounded-[4px] bg-[#ea8dff] '></p>
                     <p className='ml-6 text-xl'>Add Car</p>
                 </div>
-                <p>Category</p>
+                <p className='ml-[30px]'>Category</p>
                 <Select
                     style={{
-                        width: 470,
+                        marginLeft: "28px",
+                        width: 413,
                     }}
                     onChange={handleCategoryChange}
                     options={options}
                 />
                 <br />
                 <br />
-                <p>Name</p>
-                <Input ref={name} placeholder="Name" />
+                <div className='flex justify-around'>
+                    <div>
+                        <p>Name</p>
+                        <Input ref={name} placeholder="Name" />
+                    </div>
+                    <div>
+                        <p>Marka</p>
+                        <Input ref={marka} placeholder="Marka" />
+                    </div>
+                </div>
                 <br />
+                <div className='flex justify-around'>
+                    <div>
+                        <p>Tanirovka</p>
+                        <Input ref={tanirovka} placeholder="Tanirovka" />
+                    </div>
+                    <div>
+                        <p>Motor</p>
+                        <Input ref={motor} placeholder="Motor" />
+                    </div>
+                </div>
                 <br />
-                <p>Marka</p>
-                <Input ref={marka} placeholder="Marka" />
+                <div className='flex justify-around'>
+                    <div>
+                        <p>Gearbook</p>
+                        <Input ref={gearbook} placeholder="Gearbook" />
+                    </div>
+                    <div>
+                        <p>Year</p>
+                        <Input ref={year} placeholder="Year" />
+                    </div>
+                </div>
                 <br />
+                <div className='flex justify-around'>
+                    <div>
+                        <p>Color</p>
+                        <Input ref={color} placeholder="Color" />
+                    </div>
+                    <div>
+                        <p>Distance</p>
+                        <Input ref={distance} placeholder="Distance" />
+                    </div>
+                </div>
                 <br />
-                <p>Tanirovka</p>
-                <Input ref={tanirovka} placeholder="Tanirovka" />
+                <div className='ml-[27px]'>
+                    <p>Price</p>
+                    <Input style={{ width: 420 }} ref={price} placeholder="Price" />
+                </div>
                 <br />
+                <div className='ml-[27px] w-[420px]' >
+                    <p>Desc</p>
+                    <TextArea ref={desc} rows={4} placeholder="Description" />
+                </div>
                 <br />
-                <p>Motor</p>
-                <Input ref={motor} placeholder="Motor" />
-                <br />
-                <br />
-                <p>Gearbook</p>
-                <Input ref={gearbook} placeholder="Gearbook" />
-                <br />
-                <br />
-                <p>Year</p>
-                <Input ref={year} placeholder="Year" />
-                <br />
-                <br />
-                <p>Color</p>
-                <Input ref={color} placeholder="Color" />
-                <br />
-                <br />
-                <p>Distance</p>
-                <Input ref={distance} placeholder="Distance" />
-                <br />
-                <br />
-                <p>Price</p>
-                <Input ref={price} placeholder="Price" />
-                <br />
-                <br />
-                <p>Desc</p>
-                <TextArea ref={desc} rows={4} placeholder="Description" />
-                <br />
-                <br />
-                <p>Cover Image</p>
-                <Upload {...coverImage}>
-                    <Button >Click to Upload</Button>
-                </Upload>
-                <br />
-                <br />
-                <p>Info Image</p>
-                <Upload {...infoImageUpload}>
-                    <Button >Click to Upload</Button>
-                </Upload>
-                <br />
-                <br />
-                <p>Carousel Images</p>
-                <Upload multiple onChange={handleFileChange} customRequest={handleCustomRequest}>
-                    <Button >Click to Upload</Button>
-                </Upload>
+                <div className='flex justify-around mb-8' >
+                    <div>
+                        <p>Cover Image</p>
+                        <Upload {...coverImage}>
+                            <Button >Click to Upload</Button>
+                        </Upload>
+                    </div>
+                    <div>
+                        <p>Info Image</p>
+                        <Upload {...infoImageUpload}>
+                            <Button >Click to Upload</Button>
+                        </Upload>
+                    </div>
+                    <div>
+                        <p>Carousel Images</p>
+                        <Upload multiple onChange={handleFileChange} customRequest={handleCustomRequest}>
+                            <Button >Click to Upload</Button>
+                        </Upload>
+                    </div>
+                </div>
             </Modal>
 
             <Modal
                 title=""
                 open={isModalOpen}
+                onCancel={handleCancel}
                 footer={[
                     <Button
                         key="back"
@@ -576,7 +598,6 @@ const Products = () => {
             <Modal
                 title=""
                 open={isModal}
-                onOk={handleUpdate}
                 onCancel={handleUpdateCancel}
                 footer={[
                     <Button
@@ -596,44 +617,59 @@ const Products = () => {
                     <p className='absolute w-[14px] h-[28px] rounded-[4px] bg-[#98ff8d] '></p>
                     <p className='ml-6 text-xl'>Update</p>
                 </div>
-                <p>Name</p>
-                <Input ref={name} placeholder={info.name} />
+                <div className='flex justify-around'>
+                    <div>
+                        <p>Name</p>
+                        <Input ref={name} placeholder={info.name} />
+                    </div>
+                    <div>
+                        <p>Marka</p>
+                        <Input ref={marka} placeholder={info.marka} />
+                    </div>
+                </div>
                 <br />
+                <div className='flex justify-around'>
+                    <div>
+                        <p>Tanirovka</p>
+                        <Input ref={tanirovka} placeholder={info.tonirovka} />
+                    </div>
+                    <div>
+                        <p>Motor</p>
+                        <Input ref={motor} placeholder={info.motor} />
+                    </div>
+                </div>
                 <br />
-                <p>Marka</p>
-                <Input ref={marka} placeholder={info.marka} />
+                <div className='flex justify-around'>
+                    <div>
+                        <p>Gearbook</p>
+                        <Input ref={gearbook} placeholder={info.gearbook} />
+                    </div>
+                    <div>
+                        <p>Year</p>
+                        <Input ref={year} placeholder={info.year} />
+                    </div>
+                </div>
                 <br />
+                <div className='flex justify-around'>
+                    <div>
+                        <p>Color</p>
+                        <Input ref={color} placeholder={info.color} />
+                    </div>
+                    <div>
+                        <p>Distance</p>
+                        <Input ref={distance} placeholder={info.distance} />
+                    </div>
+                </div>
                 <br />
-                <p>Tanirovka</p>
-                <Input ref={tanirovka} placeholder={info.tonirovka} />
+                <div className='w-[420px] ml-[27px]'>
+                    <p>Price</p>
+                    <Input ref={price} placeholder={info.price} />
+                </div>
                 <br />
-                <br />
-                <p>Motor</p>
-                <Input ref={motor} placeholder={info.motor} />
-                <br />
-                <br />
-                <p>Gearbook</p>
-                <Input ref={gearbook} placeholder={info.gearbook} />
-                <br />
-                <br />
-                <p>Year</p>
-                <Input ref={year} placeholder={info.year} />
-                <br />
-                <br />
-                <p>Color</p>
-                <Input ref={color} placeholder={info.color} />
-                <br />
-                <br />
-                <p>Distance</p>
-                <Input ref={distance} placeholder={info.distance} />
-                <br />
-                <br />
-                <p>Price</p>
-                <Input ref={price} placeholder={info.price} />
-                <br />
-                <br />
-                <p>Desc</p>
-                <TextArea ref={desc} rows={4} placeholder={info.desc} />
+                <div className='w-[420px] ml-[27px]'>
+                    <p>Desc</p>
+                    <TextArea ref={desc} rows={4} placeholder={info.desc} />
+                </div>
             </Modal>
         </div>
     )
