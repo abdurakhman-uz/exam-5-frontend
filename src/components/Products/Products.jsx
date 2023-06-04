@@ -151,31 +151,31 @@ const Products = () => {
     const handleFileChange = ({ file, onSuccess }) => {
         // Create a new FormData object
         const formData = new FormData();
-        
+
         // Append the file to the FormData object as an array
         formData.append('file', file);
-    
+
         // Make your custom request to the server
         // Replace the URL and method with your own endpoint
         fetch(`${backend}/api/cars/create/images`, {
-          method: 'POST',
-          headers: {
-            token: token
-          },
-          body: formData,
+            method: 'POST',
+            headers: {
+                token: token
+            },
+            body: formData,
         })
-          .then((response) => response.json())
-          .then((data) => {
-            // Perform any success handling here
-            console.log('Upload success:', data);
-            onSuccess();
-          })
-          .catch((error) => {
-            // Perform any error handling here
-            console.error('Upload error:', error);
-            onSuccess(error);
-          });
-      };
+            .then((response) => response.json())
+            .then((data) => {
+                // Perform any success handling here
+                console.log('Upload success:', data);
+                onSuccess();
+            })
+            .catch((error) => {
+                // Perform any error handling here
+                console.error('Upload error:', error);
+                onSuccess(error);
+            });
+    };
 
     const handleCustomRequest = ({ file, data, fileList, onSuccess, onError, onProgress }) => {
         console.log(data);
@@ -430,7 +430,11 @@ const Products = () => {
 
             </div>
 
-            <Modal title="Add Category" open={categoryModal} onOk={categorySubmit} onCancel={categoryCancel}>
+            <Modal title="" open={categoryModal} onOk={categorySubmit} onCancel={categoryCancel}>
+                <div className='relative mb-4'>
+                    <p className='absolute w-[14px] h-[28px] rounded-[4px] bg-[#CABDFF] '></p>
+                    <p className='ml-6 text-xl'>Add Category</p>
+                </div>
                 <p>Name</p>
                 <Input ref={name} placeholder="Name" />
                 <br />
@@ -440,7 +444,11 @@ const Products = () => {
                 </Upload>
             </Modal>
 
-            <Modal title="Add Car" open={addCars} onOk={handleAddCars} onCancel={handleCarsCancel}>
+            <Modal title="" open={addCars} onOk={handleAddCars} onCancel={handleCarsCancel}>
+                <div className='relative mb-4'>
+                    <p className='absolute w-[14px] h-[28px] rounded-[4px] bg-[#ea8dff] '></p>
+                    <p className='ml-6 text-xl'>Add Car</p>
+                </div>
                 <p>Category</p>
                 <Select
                     style={{
@@ -509,13 +517,21 @@ const Products = () => {
                 </Upload>
             </Modal>
 
-            <Modal title="Delete" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+            <Modal title="" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+                <div className='relative mb-4'>
+                    <p className='absolute w-[14px] h-[28px] rounded-[4px] bg-[#ff8d8d] '></p>
+                    <p className='ml-6 text-xl'>Delete</p>
+                </div>
                 {
                     info.name
                 }
             </Modal>
 
-            <Modal title="Update" open={isModal} onOk={handleUpdate} onCancel={handleUpdateCancel}>
+            <Modal title="" open={isModal} onOk={handleUpdate} onCancel={handleUpdateCancel}>
+                <div className='relative mb-4'>
+                    <p className='absolute w-[14px] h-[28px] rounded-[4px] bg-[#98ff8d] '></p>
+                    <p className='ml-6 text-xl'>Update</p>
+                </div>
                 <p>Name</p>
                 <Input ref={name} placeholder={info.name} />
                 <br />
