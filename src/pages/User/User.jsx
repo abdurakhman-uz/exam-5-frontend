@@ -1,6 +1,7 @@
 import { Button, Input, message, Modal } from 'antd'
 import React, { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import Unauthorized from '../Unauthorized/Unauthorized'
 
 const User = () => {
     const token = localStorage.getItem("token")
@@ -17,10 +18,12 @@ const User = () => {
     if (!token) {
         return (
             <>
-                <div className="flex flex-col items-center mt-[100px]">
+                {/* <div className="flex flex-col items-center mt-[100px]">
                     <p className='text-3xl'>401 | Unauthorized</p>
                     <Link className='mt-6 border-2 py-1 px-3 bg-[#4096ff] text-lg text-white rounded-lg' to="/">Back to Home</Link>
-                </div>
+                </div> */}
+
+                <Unauthorized/>
             </>
         )
     }
