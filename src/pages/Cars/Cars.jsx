@@ -21,7 +21,13 @@ const Cars = () => {
 
     return (
         <>
-            <Link to="/login" className=" absolute top-4 right-4 text-white text-lg py-2 px-4 bg-[#4096ff] rounded-lg">Login</Link>
+            {
+                !token ?
+                    (
+                        <Link to="/login" className=" absolute top-4 right-4 text-white text-lg py-2 px-4 bg-[#4096ff] rounded-lg">Login</Link>
+                    )
+                    : null
+            }
             <div className={`${css.container} flex mt-20`}>
                 <div className={`${css.wrapper}`}>
                     {
