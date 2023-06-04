@@ -1,4 +1,4 @@
-import { Input, message, Modal } from 'antd'
+import { Input, message, Modal, Button } from 'antd'
 import React, { useState } from 'react'
 import { useRef } from 'react'
 import { useEffect } from 'react'
@@ -123,7 +123,23 @@ const Users = () => {
           }
         </ul>
 
-        <Modal title="" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+        <Modal
+          title=""
+          open={isModalOpen}
+          footer={[
+            <Button
+              key="back"
+              onClick={handleCancel}>
+              Exit
+            </Button>,
+            <Button
+              key="submit"
+              className=''
+              onClick={handleOk}>
+              Delete
+            </Button>,
+          ]}
+        >
           <div className='relative mb-4'>
             <p className='absolute w-[14px] h-[28px] rounded-[4px] bg-[#ff8d8d] '></p>
             <p className='ml-6 text-xl'>User Delete</p>
@@ -131,7 +147,23 @@ const Users = () => {
           <p>Are you sure to delete:</p><p className='font-mono'>{info.username}</p>
         </Modal>
 
-        <Modal title="" open={isModal} onOk={handleUpdate} onCancel={handleUpdateCancel}>
+        <Modal
+          title=""
+          open={isModal}
+          footer={[
+            <Button
+              key="back"
+              onClick={handleUpdateCancel}>
+              Exit
+            </Button>,
+            <Button
+              key="submit"
+              className=''
+              onClick={handleUpdate}>
+              Update
+            </Button>,
+          ]}
+        >
           <div className='relative mb-4'>
             <p className='absolute w-[14px] h-[28px] rounded-[4px] bg-[#98ff8d] '></p>
             <p className='ml-6 text-xl'>User Update</p>
@@ -146,7 +178,7 @@ const Users = () => {
           <br />
         </Modal>
       </div>
-    </div>
+    </div >
   )
 }
 
