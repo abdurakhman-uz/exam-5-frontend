@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Link, Outlet, useNavigate } from "react-router-dom"
 import Navbar from "../../../components/Navbar/Navbar"
 import Sidebar from "../../../components/Sidebar/Sidebar"
+import Unauthorized from "../../Unauthorized/Unauthorized"
 
 const AdminHome = () => {
     const [render, setRender] = useState(false)
@@ -45,10 +46,12 @@ const AdminHome = () => {
 
     return (
         <>
-            <div className="flex flex-col items-center mt-[100px]">
+            {/* <div className="flex flex-col items-center mt-[100px]">
                 <p className='text-3xl'>401 | Unauthorized</p>
                 <Link className='mt-6 border-2 py-1 px-3 bg-[#4096ff] text-lg text-white rounded-lg' to="/">Back to Home</Link>
-            </div>
+            </div> */}
+
+            <Unauthorized/>
         </>
     )
 }
