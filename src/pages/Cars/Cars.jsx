@@ -21,10 +21,11 @@ const Cars = () => {
 
     return (
         <>
+            <Link to="/login" className=" absolute top-4 right-4 text-white text-lg py-2 px-4 bg-[#4096ff] rounded-lg">Login</Link>
             <div className={`${css.container} flex mt-20`}>
                 <div className={`${css.wrapper}`}>
                     {
-                        cars.length > 0 ? cars.map(car => <Card data={car} cars/>) : null
+                        cars.length > 0 ? cars.map(car => <Card data={car} cars />) : null
                     }
                 </div>
             </div>
