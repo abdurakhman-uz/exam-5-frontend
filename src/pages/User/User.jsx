@@ -123,11 +123,11 @@ const User = () => {
                     <p className='ml-6 text-xl'>User Update</p>
                 </div>
                 <p>Name</p>
-                <Input ref={username} placeholder="Username" />
+                <Input ref={username} placeholder={info?.username ? info.username : "Username"} />
                 <br />
                 <br />
                 <p>Email</p>
-                <Input ref={email} placeholder="Email" />
+                <Input ref={email} placeholder={info?.email ? info.email : "Email"} />
                 <br />
                 <br />
                 <p>Marka</p>
