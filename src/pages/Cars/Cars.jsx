@@ -7,6 +7,7 @@ import css from "./Cars.module.css"
 const Cars = () => {
     const params = useParams()
     const backend = import.meta.env.VITE_BECKEND
+    const token = localStorage.getItem("token");
 
     const [cars, setCars] = useState([])
 
