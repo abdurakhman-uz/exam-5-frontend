@@ -430,7 +430,23 @@ const Products = () => {
 
             </div>
 
-            <Modal title="" open={categoryModal} onOk={categorySubmit} onCancel={categoryCancel}>
+            <Modal
+                title=""
+                open={categoryModal}
+                footer={[
+                    <Button
+                        key="back"
+                        onClick={categoryCancel}>
+                        Exit
+                    </Button>,
+                    <Button
+                        key="submit"
+                        className=''
+                        onClick={categorySubmit}>
+                        Add Category
+                    </Button>,
+                ]}
+            >
                 <div className='relative mb-4'>
                     <p className='absolute w-[14px] h-[28px] rounded-[4px] bg-[#CABDFF] '></p>
                     <p className='ml-6 text-xl'>Add Category</p>
@@ -444,7 +460,23 @@ const Products = () => {
                 </Upload>
             </Modal>
 
-            <Modal title="" open={addCars} onOk={handleAddCars} onCancel={handleCarsCancel}>
+            <Modal
+                title=""
+                open={addCars}
+                footer={[
+                    <Button
+                        key="back"
+                        onClick={handleCarsCancel}>
+                        Exit
+                    </Button>,
+                    <Button
+                        key="submit"
+                        className=''
+                        onClick={handleAddCars}>
+                        Add Car
+                    </Button>,
+                ]}
+            >
                 <div className='relative mb-4'>
                     <p className='absolute w-[14px] h-[28px] rounded-[4px] bg-[#ea8dff] '></p>
                     <p className='ml-6 text-xl'>Add Car</p>
@@ -517,7 +549,23 @@ const Products = () => {
                 </Upload>
             </Modal>
 
-            <Modal title="" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+            <Modal
+                title=""
+                open={isModalOpen}
+                footer={[
+                    <Button
+                        key="back"
+                        onClick={handleCancel}>
+                        Exit
+                    </Button>,
+                    <Button
+                        key="submit"
+                        className=''
+                        onClick={handleOk}>
+                        Delete
+                    </Button>,
+                ]}
+            >
                 <div className='relative mb-4'>
                     <p className='absolute w-[14px] h-[28px] rounded-[4px] bg-[#ff8d8d] '></p>
                     <p className='ml-6 text-xl'>Delete</p>
@@ -525,7 +573,25 @@ const Products = () => {
                 <p>Are you sure to delete:</p><p className='font-mono'>{info.name}</p>
             </Modal>
 
-            <Modal title="" open={isModal} onOk={handleUpdate} onCancel={handleUpdateCancel}>
+            <Modal
+                title=""
+                open={isModal}
+                onOk={handleUpdate}
+                onCancel={handleUpdateCancel}
+                footer={[
+                    <Button
+                        key="back"
+                        onClick={handleUpdateCancel}>
+                        Exit
+                    </Button>,
+                    <Button
+                        key="submit"
+                        className=''
+                        onClick={handleUpdate}>
+                        Update
+                    </Button>,
+                ]}
+            >
                 <div className='relative mb-4'>
                     <p className='absolute w-[14px] h-[28px] rounded-[4px] bg-[#98ff8d] '></p>
                     <p className='ml-6 text-xl'>Update</p>
