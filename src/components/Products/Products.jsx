@@ -411,7 +411,7 @@ const Products = () => {
                     </li>
                     {
                         cars?.map(product => (
-                            <li key={product.id} className='border-b-2 w-[1200px] h-10 flex justify-around items-center'>
+                            <li key={product._id} className='border-b-2 w-[1200px] h-10 flex justify-around items-center'>
                                 <p className='w-[150px] text-center'>{product.name}</p>
                                 <p className='w-[150px] text-center'>{product.gearbook}</p>
                                 <p className='w-[150px] text-center'>{product.tonirovka}</p>
