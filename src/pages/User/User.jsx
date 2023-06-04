@@ -39,7 +39,6 @@ const User = () => {
                 return res.json()
             })
             .then(data => {
-                console.log(data);
                 setInfo(data.user)
             })
     }, [])
