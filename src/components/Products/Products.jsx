@@ -16,10 +16,10 @@ const Products = () => {
     const [categoryImage, setCategoryImage] = useState("")
     const [addCars, setAddCars] = useState(false)
     const [update, setUpdate] = useState(false);
+    const [category, setCategory] = useState();
     const token = localStorage.getItem("token")
     const backend = import.meta.env.VITE_BECKEND
 
-    let category = ""
     const name = useRef(null);
     const marka = useRef(null);
     const tanirovka = useRef(null);
@@ -329,7 +329,7 @@ const Products = () => {
     }
 
     const handleCategoryChange = (value) => {
-        category = value
+        setCategory(value)
     }
 
     const handleAddCars = () => {
