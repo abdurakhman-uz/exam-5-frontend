@@ -522,9 +522,7 @@ const Products = () => {
                     <p className='absolute w-[14px] h-[28px] rounded-[4px] bg-[#ff8d8d] '></p>
                     <p className='ml-6 text-xl'>Delete</p>
                 </div>
-                {
-                    info.name
-                }
+                <p>Are you sure to delete:</p><p className='font-mono'>{info.name}</p>
             </Modal>
 
             <Modal title="" open={isModal} onOk={handleUpdate} onCancel={handleUpdateCancel}>
