@@ -47,8 +47,9 @@ const AdminHome = () => {
 
     return (
         <>
-            <div className="flex justify-center mt-6 text-xl">
-                <p>401 | Unauthorized</p>
+            <div className="flex flex-col items-center mt-[100px]">
+                <p className='text-3xl'>401 | Unauthorized</p>
+                <Link className='mt-6 border-2 py-1 px-3 bg-[#4096ff] text-lg text-white rounded-lg' to="/">Back to Home</Link>
             </div>
         </>
     )
