@@ -33,7 +33,7 @@ const AdminHome = () => {
 
     if (render) {
         return (
-            <div className=" w-[1480px] ml-auto mr-auto flex">
+            <div className=" w-[1480px] ml-auto mr-auto flex relative">
                 <Sidebar />
                 <Navbar />
 
