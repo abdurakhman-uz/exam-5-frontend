@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Outlet, Route, Routes, useNavigate } from "react-router-dom"
+import { Link, Outlet, useNavigate } from "react-router-dom"
 import Navbar from "../../../components/Navbar/Navbar"
 import Products from "../../../components/Products/Products"
 import Sidebar from "../../../components/Sidebar/Sidebar"
