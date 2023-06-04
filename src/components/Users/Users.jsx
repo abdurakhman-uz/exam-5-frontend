@@ -13,6 +13,7 @@ const Users = () => {
   const [update, setUpdate] = useState(false)
 
   const username = useRef(null);
+  const email = useRef(null);
   const password = useRef(null);
 
   useEffect(() => {
@@ -103,6 +104,7 @@ const Users = () => {
         <ul>
           <li className='border-b-2 w-[1200px] h-8 flex mb-4 justify-around'>
             <p className='w-[150px] text-center'>Username</p>
+            <p className='w-[150px] text-center'>Email</p>
             <p className='w-[150px] text-center'>Created At</p>
             <p className='w-[150px] text-center'>Role</p>
             <p className='w-[150px] text-center'></p>
@@ -112,6 +114,7 @@ const Users = () => {
             users?.map(user => (
               <li key={user._id} className='border-b-2 w-[1200px] h-10 flex justify-around items-center'>
                 <p className='w-[150px] text-center'>{user.username}</p>
+                <p className='w-[150px] text-center'>{user.email}</p>
                 <p className='w-[150px] text-center'>{createdAt(user.createdAt)}</p>
                 <p className='w-[150px] text-center'>{user.role}</p>
                 <div className='w-[150px] text-center flex justify-center items-center'>
@@ -170,6 +173,10 @@ const Users = () => {
           </div>
           <p>Name</p>
           <Input ref={username} placeholder={info.username} />
+          <br />
+          <br />
+          <p>Email</p>
+          <Input ref={email} placeholder={info.email} />
           <br />
           <br />
           <p>Marka</p>
