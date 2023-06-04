@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link, Outlet, useNavigate } from "react-router-dom"
 import Navbar from "../../../components/Navbar/Navbar"
-import Products from "../../../components/Products/Products"
 import Sidebar from "../../../components/Sidebar/Sidebar"
 
 const AdminHome = () => {
@@ -36,7 +35,6 @@ const AdminHome = () => {
             <div className=" w-[1480px] ml-auto mr-auto flex relative">
                 <Sidebar />
                 <Navbar />
-
 
                 <div className="absolute left-[240px] top-[90px]">
                     <Outlet />
