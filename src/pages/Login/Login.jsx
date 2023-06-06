@@ -37,8 +37,9 @@ const Login = () => {
             .then(data => {
                 if (data.err) {
                     alert(data.msg)
-                } else {
-                    data.token ? localStorage.setItem("token", data.token) : null
+                }
+                if(data?.token){
+                    localStorage.setItem("token", data.token)
                     navigate("/")
                 }
             })
