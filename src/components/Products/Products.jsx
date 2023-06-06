@@ -10,7 +10,7 @@ const Products = () => {
     const [cars, setCars] = useState([]);
     const [info, setInfo] = useState([]);
     const [cover, setCover] = useState("");
-    const [images, setImages] = useState("");
+    const [images, setImages] = useState([]);
     const [infoImage, setInfoImage] = useState("");
     const [categories, setCategories] = useState([]);
     const [categoryImage, setCategoryImage] = useState("")
@@ -116,98 +116,26 @@ const Products = () => {
         },
     };
 
+    const propsss = {
+        name: 'file',
+        action: `${backend}/api/cars/create/images`,
+        headers: {
+            token: token,
+        },
+        onChange(info) {
+            if (info.file.status !== 'uploading') {
+                console.log(info.file, info.fileList);
+            }
+            if (info.file.status === 'done') {
+                setImages([`${info.file.response.msg}`])
+                message.success(`${info.file.name} file uploaded successfully`);
+            } else if (info.file.status === 'error') {
+                message.error(`${info.file.name} file upload failed.`);
+            }
+        },
+    };
+
     var files = [];
-
-
-    // const handleFileChange = ({ fileList, onSuccess, onError }) => {
-    //     const formData = new FormData();
-    //     formData.append('file', fileList.fileList);
-
-    //     fetch(`${backend}/api/cars/create/images`, {
-    //         method: 'POST',
-    //         headers: {
-    //             token: token,
-    //         },
-    //         body: files,
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             // Perform any success handling here
-    //             if (data.err) {
-    //                 return onError()
-    //             }
-
-    //             console.log('Upload success:', data);
-    //             onSuccess();
-    //         })
-    //         .catch(error => {
-    //             // Perform any error handling here
-    //             console.error('Upload error:', error);
-    //             onError(error);
-    //         });
-
-    // };
-
-    const handleFileChange = ({ file, onSuccess }) => {
-        // Create a new FormData object
-        const formData = new FormData();
-
-        // Append the file to the FormData object as an array
-        formData.append('file', file);
-
-        // Make your custom request to the server
-        // Replace the URL and method with your own endpoint
-        fetch(`${backend}/api/cars/create/images`, {
-            method: 'POST',
-            headers: {
-                token: token
-            },
-            body: formData,
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                // Perform any success handling here
-                console.log('Upload success:', data);
-                onSuccess();
-            })
-            .catch((error) => {
-                // Perform any error handling here
-                console.error('Upload error:', error);
-                onSuccess(error);
-            });
-    };
-
-    const handleCustomRequest = ({ file, data, fileList, onSuccess, onError, onProgress }) => {
-        console.log(data);
-
-
-        // fetch(`${backend}/api/cars/create/images`, {
-        //     method: 'POST',
-        //     headers: {
-        //         token: token,
-        //     },
-        //     body: files,
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         // Perform any success handling here
-        //         if (data.err) {
-        //             return onError()
-        //         }
-
-        //         console.log('Upload success:', data);
-        //         onSuccess();
-        //     })
-        //     .catch(error => {
-        //         // Perform any error handling here
-        //         console.error('Upload error:', error);
-        //         onError(error);
-        //     });
-
-        // setTimeout(() => {
-        //     onSuccess();
-        // }, 5000);
-    };
 
     useEffect(() => {
         fetch(`${backend}/api/cars/`)
@@ -563,7 +491,7 @@ const Products = () => {
                     </div>
                     <div>
                         <p>Carousel Images</p>
-                        <Upload multiple onChange={handleFileChange} customRequest={handleCustomRequest}>
+                        <Upload {...propsss}>
                             <Button >Click to Upload</Button>
                         </Upload>
                     </div>
