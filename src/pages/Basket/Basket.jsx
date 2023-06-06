@@ -23,9 +23,10 @@ const BasketPage = () => {
                 return res.json()
             })
             .then(data => {
+                console.log(data);
                 setData(data.msg)
             })
-    })
+    }, [])
 
     return (
         <div className="flex flex-col min-h-screen bg-gray-100">
