@@ -22,7 +22,7 @@ const Navbar = () => {
     return (
         <div className='w-[1300px] h-[60px] bg-white relative'>
             <Link className='absolute top-2 left-8 px-[20px] py-[7px] rounded-xl bg-blue-500 text-white' to="/">Asosiyga qaytish</Link>
-            <img className='absolute w-[50px] h-[50px] right-[40px] top-1 border-2 rounded-full p-[2px] bg-gray-200 cursor-pointer' src={userInfo.profilePhoto ? `${backend}/api/user/profile/photo/${userInfo.profilePhoto}` : "/avatar.svg"} alt="" />
+            <Link to="/user/info"><img className='absolute w-[50px] h-[50px] right-[40px] top-1 border-2 rounded-full p-[2px] bg-gray-200 cursor-pointer' src={userInfo.profilePhoto ? `${backend}/api/user/profile/photo/${userInfo.profilePhoto}` : "/avatar.svg"} alt="" /></Link>
         </div>
     )
 }
