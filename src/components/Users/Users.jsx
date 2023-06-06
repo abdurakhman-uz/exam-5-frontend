@@ -180,7 +180,7 @@ const Users = () => {
           <Input ref={email} placeholder={info.email} />
           <br />
           <br />
-          <p>Marka</p>
+          <p>Password</p>
           <Input ref={password} placeholder="password" />
           <br />
           <br />
