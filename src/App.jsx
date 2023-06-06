@@ -9,6 +9,7 @@ import Products from "./components/Products/Products"
 import Users from "./components/Users/Users"
 import User from "./pages/User/User"
 import NotFoundPage from "./pages/NotFound/NotFound"
+import BasketPage from "./pages/Basket/Basket"
 
 const App = () => {
   const token = localStorage.getItem("token")
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/user/info" element={<User />} />
+          <Route path="/user/baskets" element={<BasketPage />} />
 
           {/* <Route path="/private/admin/home"  /> */}
           <Route path="/private/admin/" element={<AdminHome />}>
