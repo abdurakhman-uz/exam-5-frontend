@@ -133,7 +133,7 @@ const User = () => {
                 <Input ref={email} placeholder={info?.email ? info.email : "Email"} />
                 <br />
                 <br />
-                <p>Marka</p>
+                <p>Password</p>
                 <Input ref={password} placeholder="password" />
                 <br />
                 <br />
