@@ -1,17 +1,21 @@
-import { Button, message, Modal } from 'antd'
+import { Button, Input, message, Modal } from 'antd'
 import React, { useEffect, useState } from 'react'
+import { useRef } from 'react'
 
 const Model = () => {
     const backend = import.meta.env.VITE_BECKEND
+    const token = localStorage.getItem("token")
     const [models, setModels] = useState([])
     const [updateModal, setUpdateModal] = useState(false)
     const [deleteModal, setDeleteModal] = useState(false)
     const [update, setUpdate] = useState([])
-    const [id, setId] = useState([])
+    const [info, setInfo] = useState([])
 
-    const handleSetDelete = (id) => {
-        id(id)
-        deleteModal(true)
+    const name = useRef(null)
+
+    const handleSetDelete = (data) => {
+        setInfo(data)
+        setDeleteModal(true)
     }
 
     const handleDelete = () => {
@@ -26,7 +30,7 @@ const Model = () => {
             .then(data => {
                 setUpdate(true)
                 message.success(data.msg)
-                setIsModalOpen(false);
+                setDeleteModal(false);
             })
             .catch(err => { console.log(err) })
     };
@@ -35,18 +39,24 @@ const Model = () => {
         setDeleteModal(false);
     };
 
-    const handleSetUpdate = (id) => {
-        id(id)
+    const handleSetUpdate = (data) => {
+        setInfo(data)
         setUpdateModal(true)
     }
 
     const handleUpdate = () => {
-        fetch(`${backend}/api/models/delete/${info._id}`, {
+
+        let data = {
+            name: name.current.input.value
+        }
+
+        fetch(`${backend}/api/models/update/${info._id}`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
                 token: token
-            }
+            },
+            body: JSON.stringify(data)
         })
             .then(res => res.json())
             .then(data => {
@@ -90,22 +100,65 @@ const Model = () => {
                             <li key={model._id} className='border-b-2 w-[1200px] h-10 flex justify-around items-center'>
                                 <p className='w-[150px] text-center'>{model.name}</p>
                                 <div className='w-[150px] text-center flex justify-center items-center'>
-                                    <button className='w-[40px] flex justify-center'><img src="/icons/pencil.svg" alt="" /></button>
-                                    <button className='w-[40px] flex justify-center'><img src="/icons/delete.svg" alt="" /></button>
+                                    <button className='w-[40px] flex justify-center' onClick={() => handleSetUpdate(model)}><img src="/icons/pencil.svg" alt="" /></button>
+                                    <button className='w-[40px] flex justify-center' onClick={() => handleSetDelete(model)}><img src="/icons/delete.svg" alt="" /></button>
                                 </div>
                             </li>
                         ))
                     }
-
-                    {/* <li className='border-b-2 w-[1200px] h-10 flex justify-around items-center'>
-                        <p className='w-[150px] text-center'>OKOKOOKKOKOK</p>
-                        <div className='w-[150px] text-center flex justify-center items-center'>
-                            <button className='w-[40px] flex justify-center' onClick={""}><img src="/icons/pencil.svg" alt="" /></button>
-                            <button className='w-[40px] flex justify-center' onClick={""}><img src="/icons/delete.svg" alt="" /></button>
-                        </div>
-                    </li> */}
                 </ul>
+                <Modal
+                    title=""
+                    open={deleteModal}
+                    onCancel={handleDeleteCancel}
+                    footer={[
+                        <Button
+                            key="back"
+                            onClick={handleDeleteCancel}>
+                            Exit
+                        </Button>,
+                        <Button
+                            key="submit"
+                            className=''
+                            onClick={handleDelete}>
+                            Delete
+                        </Button>,
+                    ]}
+                >
+                    <div className='relative mb-4'>
+                        <p className='absolute w-[14px] h-[28px] rounded-[4px] bg-[#ff8d8d] '></p>
+                        <p className='ml-6 text-xl'>User Delete</p>
+                    </div>
+                    <p>Are you sure to delete:</p><p className='font-mono'>{info.name}</p>
+                </Modal>
 
+                <Modal
+                    title=""
+                    open={updateModal}
+                    onCancel={handleUpdateCancel}
+                    footer={[
+                        <Button
+                            key="back"
+                            onClick={handleUpdateCancel}>
+                            Exit
+                        </Button>,
+                        <Button
+                            key="submit"
+                            className=''
+                            onClick={handleUpdate}>
+                            Update
+                        </Button>,
+                    ]}
+                >
+                    <div className='relative mb-4'>
+                        <p className='absolute w-[14px] h-[28px] rounded-[4px] bg-[#ff8d8d] '></p>
+                        <p className='ml-6 text-xl'>Update</p>
+                    </div>
+                    <div>
+                        <p>Name</p>
+                        <Input ref={name} placeholder="Name" />
+                    </div>
+                </Modal>
             </div>
         </div >
     )
